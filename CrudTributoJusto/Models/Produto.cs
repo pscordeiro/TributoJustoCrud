@@ -28,7 +28,6 @@ namespace CrudTributoJusto.Models
 
         [DisplayName("Ativo?")]
         public bool Ativo { get; set; }
-        public int Quantidade { get; set; }
 
         /* EF Relation*/
         public Fornecedor Fornecedor { get; set; }

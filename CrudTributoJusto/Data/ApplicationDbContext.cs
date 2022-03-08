@@ -19,7 +19,7 @@ namespace CrudTributoJusto.Data
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Pedido> Pedido { get; set; }
-
+        public DbSet<Item> Item { get; set; }
 
     }
 }

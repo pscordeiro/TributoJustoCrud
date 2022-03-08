@@ -15,45 +15,41 @@
             <div class="form-group">
                 <label asp-for="ClienteId" class="control-label">Email Cliente</label>
                 <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.ClienteId"></select>
-            </div>
+            </div>   
             
-@*            
-            <div class="form-group">
-                <label asp-for="Produto" class="control-label">Produtos</label>
-                <select asp-for="Produto" class="form-control" asp-items="ViewBag.ProdutoId"></select>
+            <div class="container center" id="divProdutos">
+                @foreach(Produto produto in ViewBag.Produtos)
+                {
+                    <div class="card" style="width: 13rem;">
+                      <img class="card-img-top" src="@produto.Imagem" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">@produto.Nome</h5>
+                        <h5 class="card-title valor-produto">@produto.Valor</h5>
+                        <p class="card-text">@produto.Descricao</p>
+                        <input class="quantidadeProduto" onchange="somarValores()" id="@produto.Id" type=number min=0 max=20>
+                      </div>
+                    </div>
+                }   
             </div>
-*@
 
-            <!-- Button trigger modal -->
+@*            <!-- Button trigger modal -->
             <div class="form-group">
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-dark" onclick="loadProdutos()">
                     Adicionar itens ao pedido
                 </button>
+            </div>
+*@
+            
+            <div class="mt-5">
+                <p id="valorTotal">Valor total do pedido - </p>
             </div>
 
             <div class="form-group">
                 <input type="submit" value="Finalizar Pedido" class="btn btn-primary" />
             </div>
 
-           <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    ...
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" onclick="addProduto()" class="btn btn-primary">Salvar item</button>
-                  </div>
-                </div>
-              </div>
+            <div class="modal" id="modal">
+ 
             </div>
 
         </form>
@@ -67,5 +63,6 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
 
 

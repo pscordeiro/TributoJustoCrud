@@ -50,6 +50,7 @@ namespace CrudTributoJusto.Controllers
         {
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "Email");
             ViewData["ProdutoId"] = new SelectList(_context.Produtos, "Id", "Nome");
+            ViewBag.Produtos = _context.Produtos.Where(x => x.Ativo).ToList();
             return View();
         }
 
@@ -157,6 +158,14 @@ namespace CrudTributoJusto.Controllers
         private bool PedidoExists(Guid id)
         {
             return _context.Pedido.Any(e => e.Id == id);
+        }
+
+        [HttpGet]
+        [Route("/carregarProdutos")]
+        public IActionResult GetProdutos()
+        {
+            var produtos = _context.Produtos.Where(x => x.Ativo).ToList();
+            return PartialView("~/Views/Pedidos/_PedidosPartial.cshtml", produtos);
         }
 
     }

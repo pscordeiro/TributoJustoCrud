@@ -16,7 +16,7 @@ namespace CrudTributoJusto.Models
 
         [DisplayName("Ativo?")]
         public bool Ativo { get; set; }
-        public IEnumerable<Produto> ItensPedido { get; set; }
+        public IEnumerable<Item> ItensPedido { get; set; }
 
         /* EF Relations */
         public Cliente Cliente { get; set; }

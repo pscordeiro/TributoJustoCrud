@@ -1,24 +1,17 @@
-﻿function addProduto() {
-    
-}
+﻿function somarValores() {
+    //var quantidade = $(`#${id}`).val();
+    //var valorTotalProduto = (quantidade * parseInt(valor));
 
-async function IncluirOutroIdioma() {
-    try {
-        showLoader();
-        let posicao = parseInt($("#listaIdiomas .idiomas__list").last().attr('position')) + 1;
+    //$('#valorTotal').text('R$' + valorTotalProduto + ',00')
 
-        const url = `${window.location.origin}/curriculo/cursos-idiomas/incluir-outro-idioma/${posicao}`;
+    //console.log(valorTotalProduto);
 
-        var res = await ajaxRequestReturnHtml(url, 'GET');
+    //var teste = document.getElementsByClassName('divProdutos');
+    //console.log(teste);
 
-        $("#listaIdiomas").append(res);
-        LoadSelectsIdioma();
-        hideLoader();
-    }
-    catch (err) {
-        hideLoader();
-        $.map(err.responseJSON.errors, function (values, index) {
-            toast.error(Object.values(values));
-        });
-    }
+    var valorTotal = 0;
+    var produtos = document.querySelectorAll(".card-body");
+
+    console.log(produtos);
+
 }
