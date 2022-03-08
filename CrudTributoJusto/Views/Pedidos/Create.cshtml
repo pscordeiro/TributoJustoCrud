@@ -1,0 +1,71 @@
+﻿@model CrudTributoJusto.Models.Pedido
+
+@{
+    ViewData["Title"] = "Cadastrar Pedido";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="ClienteId" class="control-label">Email Cliente</label>
+                <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.ClienteId"></select>
+            </div>
+            
+@*            
+            <div class="form-group">
+                <label asp-for="Produto" class="control-label">Produtos</label>
+                <select asp-for="Produto" class="form-control" asp-items="ViewBag.ProdutoId"></select>
+            </div>
+*@
+
+            <!-- Button trigger modal -->
+            <div class="form-group">
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+                    Adicionar itens ao pedido
+                </button>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Finalizar Pedido" class="btn btn-primary" />
+            </div>
+
+           <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" onclick="addProduto()" class="btn btn-primary">Salvar item</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-danger" asp-action="Index">Cancelar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

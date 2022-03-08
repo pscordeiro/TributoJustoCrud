@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CrudTributoJusto.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Lista de Clientes";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a class="btn btn-info" asp-action="Create">Novo Cliente</a>
+</p>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td class="text-right">
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Apagar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
